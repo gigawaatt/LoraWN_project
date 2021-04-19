@@ -32,8 +32,34 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CsvHelper, Version=22.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.22.1.2\lib\net45\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="DSharp.CsvHelper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DSharp.CsvHelper.2.0.2\lib\netstandard2.0\DSharp.CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1-beta1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,6 +69,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="websocket-sharp, Version=1.0.2.59611, Culture=neutral, PublicKeyToken=5660b08a1845a91e, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebSocketSharp.1.0.3-rc11\lib\websocket-sharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Form1.cs">
@@ -51,8 +80,36 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="invokeifneed.cs" />
+    <Compile Include="jsonClass\AuthReqClass.cs" />
+    <Compile Include="jsonClass\AuthRespClass.cs" />
+    <Compile Include="jsonClass\BaseRespClass.cs" />
+    <Compile Include="jsonClass\CloseAuthReqClass.cs" />
+    <Compile Include="jsonClass\DataList.cs" />
+    <Compile Include="jsonClass\DeleteDeviceData.cs" />
+    <Compile Include="jsonClass\DevicesList.cs" />
+    <Compile Include="jsonClass\ErrorClass.cs" />
+    <Compile Include="jsonClass\GetDataReqClass.cs" />
+    <Compile Include="jsonClass\GetDataRespClass.cs" />
+    <Compile Include="jsonClass\GetDeviceAppdataReqClass.cs" />
+    <Compile Include="jsonClass\GetDeviceAppdataRespClass.cs" />
+    <Compile Include="jsonClass\GetUsersReqClass.cs" />
+    <Compile Include="jsonClass\GetUsersRespClass.cs" />
+    <Compile Include="jsonClass\IVegaPayloadClass.cs" />
+    <Compile Include="jsonClass\RecoverAuthReqClass.cs" />
+    <Compile Include="jsonClass\RxSettings.cs" />
+    <Compile Include="jsonClass\SelectClass.cs" />
+    <Compile Include="jsonClass\TimeConvert.cs" />
+    <Compile Include="jsonClass\TypeOfPacketEnum.cs" />
+    <Compile Include="jsonClass\VegaParansClass.cs" />
+    <Compile Include="jsonClass\VegaPayloadCi11Class.cs" />
+    <Compile Include="jsonClass\VegaPayloadMC01.cs" />
+    <Compile Include="jsonClass\VegaPayloadRAKclass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -61,7 +118,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -74,6 +133,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Зелёное.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Красное.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\medium_c9c2bce82b74978a3e87079f2ce6e52b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Red.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
